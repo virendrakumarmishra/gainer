@@ -1,0 +1,11 @@
+backend/.venv/
+backend/.env
+backend/__pycache__/
+backend/**/*.pyc
+backend/subs_plateform.egg-info
+backend/structure.md
+backend/app/storage/logs
+
+frontend/node_modules/
+frontend/.env
+frontend/dist/
