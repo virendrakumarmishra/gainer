@@ -8,6 +8,8 @@ from app.models.user import User
 from app.repositories.session_repository import SessionRepository
 from app.repositories.user_repository import UserRepository
 from app.services.auth_service import AuthService
+from app.repositories.channel_repository import ChannelRepository
+from app.services.channel_service import ChannelService
 
 
 def get_security_service() -> Security:
@@ -64,3 +66,13 @@ def get_current_user(
         )
 
     return user
+
+
+def get_channel_repository(db: Session = Depends(get_db)) -> ChannelRepository:
+    return ChannelRepository(db)
+
+
+def get_channel_service(
+    channel_repo: ChannelRepository = Depends(get_channel_repository),
+) -> ChannelService:
+    return ChannelService(channel_repo=channel_repo)
